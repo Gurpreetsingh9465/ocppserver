@@ -13,11 +13,14 @@
 	<version>1.0</version>
 	<name>ocpp</name>
 	<description>ocpp protocol</description>
-
+	
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>ocpp.OcppApplication</start-class>
 	</properties>
 
+ 	<packaging>war</packaging>
+ 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -44,7 +47,18 @@
         <dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-core</artifactId>
-		    </dependency>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
