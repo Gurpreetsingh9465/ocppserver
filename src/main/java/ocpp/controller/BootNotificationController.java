@@ -7,24 +7,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ocpp.model.User;
-import ocpp.service.BootNotificationService;
 
 @RestController("bootNotificationController")
 public class BootNotificationController {
-	@Autowired
-	private BootNotificationService bootNotificationService;
-	public BootNotificationService getBootNotificationService() {
-		return bootNotificationService;
-	}
 
-	public void setBootNotificationService(BootNotificationService bootNotificationService) {
-		this.bootNotificationService = bootNotificationService;
-	}
-	@RequestMapping(value="/bootNotification",method=RequestMethod.GET)
+	@RequestMapping(value="/bootNotification",method=RequestMethod.POST)
 	@ResponseBody
-	public User bootNotification(@RequestParam("id") String id) {
-		System.out.println(bootNotificationService);
-		return bootNotificationService.bootDevice(id);
+	public String bootNotification(@RequestParam("chargePointVendor") String chargePointVendor,
+@RequestParam("chargePointModel") String chargePointModel,
+@RequestParam("chargePointSerialNumber") String chargePointSerialNumber,
+@RequestParam("chargeBoxSerialNumber") String chargeBoxSerialNumber,
+@RequestParam("firmwareVersion") String firmwareVersion,
+@RequestParam("iccid") String iccid,
+@RequestParam("imsi") String imsi,
+@RequestParam("meterType") String meterType,
+@RequestParam("meterSerialNumber") String meterSerialNumber) {
+		return "BootNotificationController";
 	}
 }
