@@ -2,6 +2,8 @@ package ocpp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,17 +16,11 @@ import ocpp.service.BootNotificationService;
 public class BootNotificationController {
 	@Autowired
 	private BootNotificationService bootNotificationService;
-	public BootNotificationService getBootNotificationService() {
-		return bootNotificationService;
-	}
-
-	public void setBootNotificationService(BootNotificationService bootNotificationService) {
-		this.bootNotificationService = bootNotificationService;
-	}
-	@RequestMapping(value="/bootNotification",method=RequestMethod.GET)
+	
+	@RequestMapping(value="/bootNotification",method=RequestMethod.POST)
 	@ResponseBody
-	public User bootNotification(@RequestParam("id") String id) {
-		System.out.println(bootNotificationService);
+	public User bootNotification(@PathVariable("id") String id) {
+		System.out.println(id);
 		return bootNotificationService.bootDevice(id);
 	}
 }

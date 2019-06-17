@@ -10,23 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="ChargePoint")
 public class ChargePoint {
-	/*default constructor*/
-	public ChargePoint() {
-		
-	}
-	
-	/*parameterized constructor*/
-	public ChargePoint(int chargePointId, String addressLine1, String addressLine2, String city, String state,
-			int postalCode, float latitude, float longitude) {
-		this.chargePointId = chargePointId;
-		this.addressLine1 = addressLine1;
-		this.addressLine2 = addressLine2;
-		this.city = city;
-		this.state = state;
-		this.postalCode = postalCode;
-		this.latitude = latitude;
-		this.longitude = longitude;
-	}
 
 	/*table columns*/
 	@Id
@@ -55,6 +38,23 @@ public class ChargePoint {
 	@Column(name="Longitude")
 	private float longitude;
 
+	/*default constructor*/
+	public ChargePoint() {
+		
+	}
+	
+	/*parameterized constructor*/
+	public ChargePoint(int chargePointId, String addressLine1, String addressLine2, String city, String state,
+			int postalCode, float latitude, float longitude) {
+		this.chargePointId = chargePointId;
+		this.addressLine1 = addressLine1;
+		this.addressLine2 = addressLine2;
+		this.city = city;
+		this.state = state;
+		this.postalCode = postalCode;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
 	/*getters and setters*/
 	public int getChargePointId() {
 		return chargePointId;
