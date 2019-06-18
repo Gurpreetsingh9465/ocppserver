@@ -1,27 +1,27 @@
 package ocpp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import ocpp.request.BootNotificationRequest;
+import ocpp.service.BootNotificationService;
 
-@RestController("bootNotificationController")
+
+
+@Controller("bootNotificationController")
 public class BootNotificationController {
-
-	@RequestMapping(value="/bootNotification",method=RequestMethod.POST)
+	@Autowired
+	private BootNotificationService service;
+	@PostMapping(path="/bootNotification")
 	@ResponseBody
-	public String bootNotification(@RequestParam("chargePointVendor") String chargePointVendor,
-@RequestParam("chargePointModel") String chargePointModel,
-@RequestParam("chargePointSerialNumber") String chargePointSerialNumber,
-@RequestParam("chargeBoxSerialNumber") String chargeBoxSerialNumber,
-@RequestParam("firmwareVersion") String firmwareVersion,
-@RequestParam("iccid") String iccid,
-@RequestParam("imsi") String imsi,
-@RequestParam("meterType") String meterType,
-@RequestParam("meterSerialNumber") String meterSerialNumber) {
+	public String bootNotification(@RequestBody BootNotificationRequest bootNotificationRequest) {
+		
+		service.bootNotificationService(bootNotificationRequest);
+		
 		return "BootNotificationController";
 	}
 }

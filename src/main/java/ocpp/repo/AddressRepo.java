@@ -3,9 +3,10 @@ package ocpp.repo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import ocpp.model.User;
+import ocpp.model.Address;
+
 
 @Repository
-public interface UserRepo extends CrudRepository<User,Integer> {
-	
+public interface AddressRepo extends CrudRepository<Address,Integer> {
+
 }
