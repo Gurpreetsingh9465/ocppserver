@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name="User")
 public class User {
 	
 	public User(int id, String firstName, String lastName, String email, String phoneNo, Boolean isflaged) {
