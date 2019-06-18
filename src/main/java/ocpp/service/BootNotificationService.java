@@ -4,9 +4,7 @@ package ocpp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ocpp.model.Address;
 import ocpp.model.ChargeBox;
-import ocpp.repo.AddressRepo;
 import ocpp.repo.ChargeBoxRepo;
 import ocpp.request.BootNotificationRequest;
 

@@ -2,7 +2,6 @@ package ocpp.controller;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +16,7 @@ public class MeterValuesController {
 	@ResponseBody
 	public String meterValues(@RequestParam("connectorId") Integer connectorId,
 @RequestParam("transactionId") Integer transactionId,
-@RequestParam("meterValue") ArrayList meterValue) {
+@RequestParam("meterValue") ArrayList<String> meterValue) {
 		return "MeterValuesController";
 	}
 }

@@ -2,22 +2,22 @@ package ocpp.essential;
 
 public class SampledValue {
 
-	enum ReadingContext {
+	public enum ReadingContext {
 		InterruptionBegin, InterruptionEnd, Other, sampleClock, SamplePeriodic, TransactionBegin, TransactionEnd, Trigger;
 	}
-	enum ValueFormat {
+	public enum ValueFormat {
 		Raw, SignedData;
 	}
-	enum UnitOfMeasure {
+	public enum UnitOfMeasure {
 		Wh, kWh, varh, kvarh, W, kW, VA, kVA, var, kvar, A, V, Celsius, Fahrenheit, K, Percent;
 	}
-	enum Measurand {
+	public enum Measurand {
 		CurrentExport, CurrentImport, CurrentOffered, EnergyActiveExportRegister, EnergyActiveImportRegister;
 	}
-	enum Phase {
+	public enum Phase {
 		L1, L2, L3, N, L1N, L2N, L3N, L1L2 , L2L3, L3L1;
 	}
-	enum Location {
+	public enum Location {
 		Body, Cable, EV, Inlet, Outlet;
 	}
 

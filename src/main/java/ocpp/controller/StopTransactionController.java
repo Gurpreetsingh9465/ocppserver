@@ -2,7 +2,6 @@ package ocpp.controller;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +19,7 @@ public class StopTransactionController {
 @RequestParam("timestamp") String timestamp,
 @RequestParam("transactionId") Integer transactionId,
 @RequestParam("reason") String reason,
-@RequestParam("transactionData") ArrayList transactionData) {
+@RequestParam("transactionData") ArrayList<String> transactionData) {
 		return "StopTransactionController";
 	}
 }
