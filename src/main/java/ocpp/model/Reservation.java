@@ -1,94 +1,144 @@
 package ocpp.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import ocpp.essential.Status;
-
 @Entity
-@Table(name="Reservation")
-public class Reservation{
+@Table(name="reservation")
+public class Reservation {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ConnectorId")
-	private int connectorID; //Required. This contains the id of the connector to be reserved. A value of 0 means that the
-                    //reservation is not for a specific connector.
-	
-	@Column(name="ExpiryDate")
-	private Date expiryDate; //Required. This contains the date and time when the reservation ends.
- 
-	@Column(name="IdTag")
-	private String idTag; //Required. The identifier for which the Charge Point has to reserve a connector. Length<20
+	    @Id 
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-	@Column(name="ParentIdTag")
-	private String parentIdTag; //Optional. The parent idTag. Length<20
-	
-	@Column(name="ReservationId")
-	private int reservationId; //Required. Unique id for this reservation.
+		@Column(name = "reservation_pk")
+	  	private int reservationPk;
 
-	@Column(name="Status")
-    private Status.Reservation status; //Required. This indicates the success or failure of the reservation.
+		@Column(name = "connector_pk")
+		private int connectorPk;
+		
+		
+		@Column(name = "transaction_pk")
+		private int transactionPk;
 
+		@Column(name = "id_tag")
+		private String idTag;
 
-    public int getConnectorID() {
-		return connectorID;
-	}
+		@Column(name = "start_datetime")
+		private Date startDateTime;
 
-	public void setConnectorID(int connectorID) {
-		this.connectorID = connectorID;
-	}
+		@Column(name = "expiry")
+		private Date expiery;
 
-	public Date getExpiryDate() {
-		return expiryDate;
-	}
+		@Column(name = "status")
+		private String status;
+		
+		@ManyToMany
+		@JoinColumn(name="connector_pk")
+		private Connector connector_pk;
+		
+		@ManyToMany
+		@JoinColumn(name="id_tag")
+		private OcppTag id_tag;
 
-	public void setExpiryDate(Date expiryDate) {
-		this.expiryDate = expiryDate;
-	}
+		public int getReservationPk() {
+			return reservationPk;
+		}
 
-	public String getIdTag() {
-		return idTag;
-	}
+		public void setReservationPk(int reservationPk) {
+			this.reservationPk = reservationPk;
+		}
 
-	public void setIdTag(String idTag) {
-		this.idTag = idTag;
-	}
+		public int getConnectorPk() {
+			return connectorPk;
+		}
 
-	public String getParentIdTag() {
-		return parentIdTag;
-	}
+		public void setConnectorPk(int connectorPk) {
+			this.connectorPk = connectorPk;
+		}
 
-	public void setParentIdTag(String parentIdTag) {
-		this.parentIdTag = parentIdTag;
-	}
+		public int getTransactionPk() {
+			return transactionPk;
+		}
 
-	public int getReservationId() {
-		return reservationId;
-	}
+		public void setTransactionPk(int transactionPk) {
+			this.transactionPk = transactionPk;
+		}
 
-	public void setReservationId(int reservationId) {
-		this.reservationId = reservationId;
-	}
+		public String getIdTag() {
+			return idTag;
+		}
 
-	public Status.Reservation getStatus() {
-		return status;
-	}
+		public void setIdTag(String idTag) {
+			this.idTag = idTag;
+		}
 
-	public void setStatus(Status.Reservation status) {
-		this.status = status;
-	}
+		public Date getStartDateTime() {
+			return startDateTime;
+		}
 
-	@Override
-	public String toString() {
-		return "Reservation [connectorID=" + connectorID + ", expiryDate=" + expiryDate + ", idTag=" + idTag
-				+ ", parentIdTag=" + parentIdTag + ", reservationId=" + reservationId + ", status=" + status + "]";
-	}
+		public void setStartDateTime(Date startDateTime) {
+			this.startDateTime = startDateTime;
+		}
 
-}
+		public Date getExpiery() {
+			return expiery;
+		}
+
+		public void setExpiery(Date expiery) {
+			this.expiery = expiery;
+		}
+
+		public String getStatus() {
+			return status;
+		}
+
+		public void setStatus(String status) {
+			this.status = status;
+		}
+
+		public Connector getConnector_pk() {
+			return connector_pk;
+		}
+
+		public void setConnector_pk(Connector connector_pk) {
+			this.connector_pk = connector_pk;
+		}
+
+		public OcppTag getId_tag() {
+			return id_tag;
+		}
+
+		public void setId_tag(OcppTag id_tag) {
+			this.id_tag = id_tag;
+		}
+
+		public Reservation(int reservationPk, int connectorPk, int transactionPk, String idTag, Date startDateTime,
+				Date expiery, String status, Connector connector_pk, OcppTag id_tag) {
+			super();
+			this.reservationPk = reservationPk;
+			this.connectorPk = connectorPk;
+			this.transactionPk = transactionPk;
+			this.idTag = idTag;
+			this.startDateTime = startDateTime;
+			this.expiery = expiery;
+			this.status = status;
+			this.connector_pk = connector_pk;
+			this.id_tag = id_tag;
+		}
+
+		@Override
+		public String toString() {
+			return "Reservation [reservationPk=" + reservationPk + ", connectorPk=" + connectorPk + ", transactionPk="
+					+ transactionPk + ", idTag=" + idTag + ", startDateTime=" + startDateTime + ", expiery=" + expiery
+					+ ", status=" + status + ", connector_pk=" + connector_pk + "]";
+		}
+		
+	}		
